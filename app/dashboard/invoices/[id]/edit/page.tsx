@@ -12,10 +12,13 @@ interface EditInvoicePageProps {
   };
 }
 
-export default async function EditInvoicePage({ params }: EditInvoicePageProps) {
+export default async function EditInvoicePage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const invoiceId = params.id;
 
-  // ambil data invoice & customers
   const [invoice, customers] = await Promise.all([
     fetchInvoiceById(invoiceId),
     fetchCustomers(),
